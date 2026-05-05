@@ -292,7 +292,11 @@
 
         let currentQuestionSteps = [];
         let currentStepIndex = 0;
-        let score = 0;
+        // let score = 0;
+
+        // Load saved score from localStorage
+        let score = parseInt(localStorage.getItem('questionsCompleted')) || 0;
+        scoreDisplay.textContent = score;
 
         const randInt = (min, max, exclude = []) => {
             let num;
@@ -521,6 +525,8 @@
                         nextBtn.style.display = 'block';
                         score++;
                         scoreDisplay.textContent = score;
+                        // Save to localStorage
+                        localStorage.setItem('questionsCompleted', score); 
                     }
                 }, 600); 
             } else {
